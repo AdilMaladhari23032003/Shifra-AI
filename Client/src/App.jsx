@@ -8,8 +8,13 @@ import Navbar from './Components/Navbar'
 import Builder from './pages/Builder'
 import Billing from './pages/Billing'
 import { Toaster } from "react-hot-toast"
-export const ServerUrl = "https://shifra-ai.onrender.com"
-export const CLIENT_URL = "https://shifra-ai-pmvc.onrender.com"
+export const ServerUrl = import.meta.env.MODE === "production"
+  ? "https://shifra-ai.onrender.com"
+  : "http://localhost:8000"
+
+export const CLIENT_URL = import.meta.env.MODE === "production"
+  ? "https://shifra-ai-pmvc.onrender.com"
+  : "http://localhost:5173"
 function App() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
